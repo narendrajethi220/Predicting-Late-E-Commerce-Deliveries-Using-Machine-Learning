@@ -1,1 +1,13 @@
-/data/
+# Ignore python cache and virtual environments
+__pycache__/
+venv/
+env/
+
+# Ignore data and large models
+data/
+*.pkl
+*.h5
+*.csv
+
+# Ignore jupyter notebook backups
+.ipynb_checkpoints/
