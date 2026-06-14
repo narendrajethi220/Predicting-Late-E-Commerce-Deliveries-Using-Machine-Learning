@@ -3,11 +3,12 @@ __pycache__/
 venv/
 env/
 
-# Ignore data and large models
-data/
-*.pkl
-*.h5
-*.csv
+# Ignore everything in raw and clean folders
+data/raw/
+data/clean/
+
+# Optional: Ensure featured parquet files are tracked
+!data/featured/*.parquet
 
 # Ignore jupyter notebook backups
 .ipynb_checkpoints/

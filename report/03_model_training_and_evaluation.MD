@@ -1,0 +1,59 @@
+#### Baseline Model
+We have selected Logistic Regression as our baseline model, because it is simple, fast, probabilities, Good baseline and our first goal is not accuracy.
+Our first goal is to establish a benchmark.
+
+#### Split,
+
+0 - 91.8% (No late deliveries)
+1 - 8.1 % (late deliveries)
+
+So we have to split carefully so that during data splitting, it must be ensures that our training and testing sets maintain the exact same propration of class labels as our original dataset.
+
+- stratify=y : This splits guarantees that exactly the training and testing dataset will be having the exact same proportion of class labels as our original dataset.
+
+#### Evaluation Metrics
+
+The objective of the project is to identify orders that are likely to be delivered late. 
+Missing a delayed order means the business loses the opportunity to take prevention action.
+Therefore Recall is important because it measures how many actual delayed orders were correctly identified by the model.
+
+1. Accuracy : 0.9189343285129321
+2. Precision: 1.0 
+- Out of all order predicted as late, how many were actually late?
+    - 1/1+0 = 1
+3. Recall   : 0.0006389776357827476
+- Out of all actually late orders, how many did we find?
+    - 1/1+1564 = 0.000639 ~ 0
+4. F1 Score : 0.001277139208173691
+- How well am I balancing Precision and Recall, One is amazing, one is terrible.
+    - F1= 0.001 , This model is bad.
+5. ROC AUC  : 0.5847508967601297
+- If I randomly pick , "one late order","one on-time order" , what is the probability that my model gives a higher score to the late order.
+    - .5847 - chance that a randomly selected delayed order receives a higher probability score than a randomly selected on-time order.
+    - Not good, random guessing .50.
+    - Model guessing - .58
+
+On printing Confusion matrix:
+confusion_matrix(y_test,y_pred)
+[[17728     0]
+ [ 1564     1]]
+
+Although accuracy is high, model fails to identify delayed orders effectively due to sever class imbalane. Low recall indicates that most delayed deliveries are being misclassified as on-time.
+
+On using class class_weight = 'balanced'
+class_weight='balanced' automatically gives more importance to the minority class and less importance to the majority class during training.
+It is used when target class is imbalanced, ensuring the model pays sufficient attention to the minority class during training.
+
+Model accuracy decreased but recall increased
+Accuracy : 0.5439796817498574
+Precision: 0.10060739922694643
+Recall   : 0.582108626198083
+F1 Score : 0.17156308851224106
+ROC AUC  : 0.5838047571538967
+
+confusion_matrix:
+array([[9584, 8144],
+       [ 654,  911]])
+
+Found 911 delayed orders
+Missed 654 delayed orders
