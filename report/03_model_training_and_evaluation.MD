@@ -57,3 +57,13 @@ array([[9584, 8144],
 
 Found 911 delayed orders
 Missed 654 delayed orders
+
+As ROC-AUC is .58 (low) means the model struggles to separate classes.
+
+- Logistic Regression serves as a good baseline model but assumes a linear relationship between the predictors and the target. Delivery delays are infulenced by multiple factors such as approval time, purchase timing, and expected delivery duration. 
+The relationship may be non linear and rule based.
+Decision Trees can capture such complex decision boundaries and feature interactions without requiring explicit feature transformation, making them a suitable next model to evaluate.
+
+Business process data often contains rules,
+Weekend AND Long Approval AND Short delivery window.
+Feature may interact with each other
