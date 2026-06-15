@@ -84,7 +84,53 @@ ROC_AUC_Score:  0.5360118465669278
 Train Score: 0.9996371552975326
 Test Score:  0.8559581195252164
 
-As the difference between the test score and the train score is too high which shows the case of overfitting.
+- Huge gape, a model that performs almost perfectly on training data but much worse on unseen data is ususally OVERFITTING.
+
+- As the difference between the test score and the train score is too high which shows the case of overfitting.
 and the result are similar to what we got using logistic regression.
 
-As a part of the next step we will be using hyperparameter tuning to improve the model accuracy.
+- As a part of the next step we will be using hyperparameter tuning to improve the model accuracy.
+Using GridSearch for best parameters.
+- We have reduced the train test score difference to .287% 
+Train Score: 0.7307173958117354
+Test Score:  0.7279842429896853
+
+- This is a sign of Good Generalization, model is learning patterns instead of memorizing.
+- Recall improved 
+Accuracy:  0.7279842429896853
+Precision:  0.16029277218664226
+Recall:  0.5706840390879478
+F1_Score:  0.2502857142857143
+ROC_AUC_Score:  0.6949256618020121
+
+Now, we are able to predict (57 delayed order out of 100 delayed order) example
+
+- ROC_AUC_Score has improved i.e., now our model is able to separate delayed vs non-delayed orders. Significantly better
+
+- Compare with Logistic Regression(Balances)
+| Metric    | Logistic Balanced | Decision Tree Tuned |
+| --------- | ----------------- | ------------------- |
+| Accuracy  | 54.4%             | 72.8%               |
+| Precision | 10.1%             | 16.0%               |
+| Recall    | 58.2%             | 57.1%               |
+| F1        | 17.1%             | 25.0%               |
+| ROC-AUC   | 58.4%             | 69.5%               |
+
+Except recall everything else improved, 
+So the Decision Tree gives a much more balanced model
+
+Here is the Important Feature table from the Decision Tree
+
+Feature	Importance
+1	purchase_month	0.603108
+2	expected_delivery_days	0.340202
+3	approval_hours	0.054229
+6	Sunday	0.001992
+0	purchase_hour	0.000469
+4	Monday	0.000000
+5	Saturday	0.000000
+7	Thursday	0.000000
+8	Tuesday	0.000000
+9	Wednesday	0.000000
+
+Higher importance means the model relies more heavily on that feature when making decisions.
