@@ -67,3 +67,24 @@ Decision Trees can capture such complex decision boundaries and feature interact
 Business process data often contains rules,
 Weekend AND Long Approval AND Short delivery window.
 Feature may interact with each other
+
+# Why Decision Tree?
+
+Logistic Regression achieved high accuracy but struggled to separate delayed and non-delayed orders effectively.
+Since delivery delays may depend on non-linear relationships and feature interactions, a Decision Tree model is evaluated as the next candidate.
+
+Without any hyperparameter tuning, I got 
+
+Accuracy:  0.8559581195252164
+Precision:  0.13921113689095127
+Recall:  0.1563517915309446
+F1_Score:  0.1472844430806996
+ROC_AUC_Score:  0.5360118465669278
+
+Train Score: 0.9996371552975326
+Test Score:  0.8559581195252164
+
+As the difference between the test score and the train score is too high which shows the case of overfitting.
+and the result are similar to what we got using logistic regression.
+
+As a part of the next step we will be using hyperparameter tuning to improve the model accuracy.
