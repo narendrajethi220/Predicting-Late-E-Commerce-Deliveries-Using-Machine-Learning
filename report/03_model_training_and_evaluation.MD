@@ -119,7 +119,7 @@ Now, we are able to predict (57 delayed order out of 100 delayed order) example
 Except recall everything else improved, 
 So the Decision Tree gives a much more balanced model
 
-Here is the Important Feature table from the Decision Tree
+- Here is the Important Feature table from the Decision Tree
 
 Feature	Importance
 1	purchase_month	0.603108
@@ -133,4 +133,6 @@ Feature	Importance
 8	Tuesday	0.000000
 9	Wednesday	0.000000
 
-Higher importance means the model relies more heavily on that feature when making decisions.
+- Higher importance means the model relies more heavily on that feature when making decisions.
+
+- Since the Decision Tree showed signs of overfitting and relies heavily on a single tree structure, Random Forect is evaluated next. By averaging predictions from multiple trees trained on different samples and feature subsets,Random Forest can reduce variance and improve generalization performance.
